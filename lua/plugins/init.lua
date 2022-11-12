@@ -43,38 +43,47 @@ return require("packer").startup(function(use)
 		after = "which-key.nvim",
 	})
 
-	-- https://github.com/neovim/nvim-lspconfig
-	-- use("neovim/nvim-lspconfig")
+        -- https://github.com/L3MON4D3/LuaSnip
+        use({
+            "L3MON4D3/LuaSnip",
+            requires = "rafamadriz/friendly-snippets",
+            config = function()
+                require("plugins.snippets")
+            end,
+        })
+
+        -- https://github.com/neovim/nvim-lspconfig
+	use("neovim/nvim-lspconfig")
 
 	-- https://github.com/onsails/lspkind-nvim
-	-- use("onsails/lspkind-nvim")
+	use("onsails/lspkind-nvim")
 
 	-- https://github.com/ray-x/lsp_signature.nvim
-	-- use("ray-x/lsp_signature.nvim")
+	use("ray-x/lsp_signature.nvim")
 
 	-- https://github.com/hrsh7th/nvim-cmp
-	-- use({
-	--     "hrsh7th/nvim-cmp",
-	--     requires = {
-	--         "hrsh7th/cmp-nvim-lsp",
-	--         "hrsh7th/cmp-nvim-lua",
-	--         "hrsh7th/cmp-path",
-	--         "saadparwaiz1/cmp_luasnip",
-	--         "hrsh7th/cmp-buffer",
-	--         "hrsh7th/cmp-calc",
-	--         "hrsh7th/cmp-cmdline", },
-	--     config = function()
-	--         require("plugins.completion")
-	--     end,
-	-- })
+	use({
+	    "hrsh7th/nvim-cmp",
+	    requires = {
+	        "hrsh7th/cmp-nvim-lsp",
+	        "hrsh7th/cmp-nvim-lua",
+	        "hrsh7th/cmp-path",
+	        "saadparwaiz1/cmp_luasnip",
+	        "hrsh7th/cmp-buffer",
+	        "hrsh7th/cmp-calc",
+	        "hrsh7th/cmp-cmdline", },
+	    config = function()
+	        require("plugins.completion")
+	    end,
+	})
 
 	-- https://github.com/windwp/nvim-autopairs
-	-- use({
-	--     "windwp/nvim-autopairs",
-	--     config = function()
-	--         require("plugins.autopairs")
-	--     end,
-	-- })
+	use({
+	    "windwp/nvim-autopairs",
+	    config = function()
+	        require("plugins.autopairs")
+	    end,
+	})
 
 	-- https://github.com/tpope/vim-surround
 	-- use("tpope/vim-surround")

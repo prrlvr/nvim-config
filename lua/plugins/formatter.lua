@@ -25,7 +25,7 @@ end
 
 formatter.setup({
 	filetype = {
-		c = { clang_format },
+		-- c = { clang_format },
 		cpp = { clang_format },
 		javascript = { prettier },
 		typescript = { prettier },
