@@ -1,11 +1,8 @@
-local colors = require("solarized.colors")
-
 local signs = {
     DiagnosticSignError = "",
     DiagnosticSignWarn = "",
     DiagnosticSignHint = "",
     DiagnosticSignInfo = "",
-    LightBulbSign = "",
 }
 
 for hl, icon in pairs(signs) do
@@ -15,13 +12,6 @@ for hl, icon in pairs(signs) do
         numhl = hl,
     })
 end
-
-vim.cmd(
-    ("autocmd ColorScheme * highlight FloatBorder guifg=%s guibg=%s"):format(
-        colors.border_highlight,
-        colors.bg_float
-    )
-)
 
 local border = {
     { "╭", "FloatBorder" },

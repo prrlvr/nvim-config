@@ -1,6 +1,6 @@
 require("lualine").setup({
     options = {
-        theme = 'solarized',
+        theme = "solarized_dark",
         section_separators = {
             left = "",
             right = "",
