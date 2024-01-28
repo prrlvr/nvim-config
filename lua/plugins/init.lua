@@ -17,16 +17,25 @@ require("lazy").setup({
         version = nil,
     },
     {
-        "svrana/neosolarized.nvim",
-        lazy = false,
-        priority = 1000,
-        dependencies = {
-            { "tjdevries/colorbuddy.nvim" },
-        },
+      "Tsuzat/NeoSolarized.nvim",
+        lazy = false, -- make sure we load this during startup if it is your main colorscheme
+        priority = 1000, -- make sure to load this before all the other start plugins
         config = function()
-            require("plugins.colorscheme")
-        end,
+          vim.cmd [[ colorscheme NeoSolarized ]]
+          require("plugins.colorscheme")
+        end
     },
+    -- {
+    --     "svrana/neosolarized.nvim",
+    --     lazy = false,
+    --     priority = 1000,
+    --     dependencies = {
+    --         { "tjdevries/colorbuddy.nvim" },
+    --     },
+    --     config = function()
+    --         require("plugins.colorscheme")
+    --     end,
+    -- },
     -- {
     --     "maxmx03/solarized.nvim",
     --     lazy = false,

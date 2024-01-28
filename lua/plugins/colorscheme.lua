@@ -1,55 +1,30 @@
--- vim.g.neosolarized_contrast=normal
--- vim.background=dark
--- vim.cmd("colorscheme NeoSolarized")
-
-n = require('neosolarized').setup({
-  comment_italics = true,
-  background_set = true,
+require('NeoSolarized').setup({
+  style = "light", -- "dark" or "light"
+  transparent = false, -- true/false; Enable this to disable setting the background color
+  terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
+  enable_italics = true, -- Italics for different hightlight groups (eg. Statement, Condition, Comment, Include, etc.)
+  styles = {
+    -- Style to be applied to different syntax groups
+    comments = { italic = true },
+    keywords = { italic = true },
+    functions = { bold = true },
+    variables = {},
+    string = { italic = true },
+    underline = true, -- true/false; for global underline
+    undercurl = true, -- true/false; for global undercurl
+  },
+  -- Add specific hightlight groups
+  -- on_highlights = function(highlights, colors) 
+  --   -- highlights.Include.fg = colors.red -- Using `red` foreground for Includes
+  -- end,
 })
-n.Group.link('WarningMsg', n.groups.Comment)
--- vim.o.background = light
--- vim.cmd.colorscheme = "solarized"
 
--- require("solarized").setup {
---     transparent = false, -- enable transparent background
--- --     palette = "solarized", -- or selenized
--- --     styles = {
--- --         comments = {},
--- --         functions = {},
--- --         variables = {},
--- --         numbers = {},
--- --         constants = {},
--- --         parameters = {},
--- --         keywords = {},
--- --         types = {},
--- --     },
--- --     enables = {
--- --         bufferline = true,
--- --         cmp = true,
--- --         diagnostic = true,
--- --         dashboard = true,
--- --         editor = true,
--- --         gitsign = true,
--- --         hop = true,
--- --         indentblankline = true,
--- --         lsp = true,
--- --         lspsaga = true,
--- --         navic = true,
--- --         neogit = true,
--- --         neotree = true,
--- --         notify = true,
--- --         noice = true,
--- --         semantic = true,
--- --         syntax = true,
--- --         telescope = true,
--- --         tree = true,
--- --         treesitter = true,
--- --         todo = true,
--- --         whichkey = true,
--- --         mini = true,
--- --     },
--- --     highlights = {},
--- --     colors = {},
--- --     theme = "default", -- or 'neo'
--- --     autocmd = true,
--- }
+vim.cmd [[
+   " try
+        colorscheme NeoSolarized
+        set background=light
+    " catch /^Vim\%((\a\+)\)\=:E18o
+    "     colorscheme default
+    "     set background=dark
+    " endtry
+]]
