@@ -21,12 +21,20 @@ require("lazy").setup({
         lazy = false,
         priority = 1000,
         dependencies = {
-            {"tjdevries/colorbuddy.nvim"},
+            { "tjdevries/colorbuddy.nvim" },
         },
         config = function()
             require("plugins.colorscheme")
         end,
     },
+    -- {
+    --     "maxmx03/solarized.nvim",
+    --     lazy = false,
+    --     priority = 3000,
+    --     config = function()
+    --         require("plugins.colorscheme")
+    --     end,
+    -- },
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
@@ -117,10 +125,12 @@ require("lazy").setup({
     },
     {
         "lukas-reineke/indent-blankline.nvim",
-        event = "BufReadPre",
-        config = function()
-            require("plugins.indent_blankline")
-        end,
+        event = { "BufNewFile" },
+        opts = {
+            show_current_context = true,
+            buftype_exclude = { "terminal", "help" },
+            filetype_exclude = { "alpha", "lazy", "NvimTree" },
+        },
     },
     {
         "nvim-lualine/lualine.nvim",
@@ -162,6 +172,38 @@ require("lazy").setup({
         "windwp/nvim-projectconfig",
         config = function()
             require("plugins.projectconfig")
+        end,
+    },
+    {
+        "Olical/conjure",
+        ft = { "mitscheme" },
+        lazy = false,
+        -- [Optional] cmp-conjure for cmp
+        dependencies = {
+            {
+                "PaterJason/cmp-conjure",
+                config = function()
+                    local cmp = require("cmp")
+                    local config = cmp.get_config()
+                    table.insert(config.sources, {
+                        name = "buffer",
+                        option = {
+                            sources = {
+                                { name = "conjure" },
+                            },
+                        },
+                    })
+                    cmp.setup(config)
+                end,
+            },
+        },
+        config = function(_, opts)
+            require("conjure.main").main()
+            require("conjure.mapping")["on-filetype"]()
+        end,
+        init = function()
+            -- Set configuration options here
+            vim.g["conjure#debug"] = true
         end,
     },
 })

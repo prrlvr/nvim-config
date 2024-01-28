@@ -87,14 +87,14 @@ formatter.setup({
 
 local format_on_save = true
 
-vim.api.nvim_create_autocmd("BufWritePost", {
-    pattern = "*",
-    callback = function()
-        if format_on_save then
-            vim.cmd("silent! FormatWrite")
-        end
-    end,
-})
+-- vim.api.nvim_create_autocmd("BufWritePost", {
+--     pattern = "*",
+--     callback = function()
+--         if format_on_save then
+--             vim.cmd("silent! FormatWrite")
+--         end
+--     end,
+-- })
 
 wk.register({
     name = "formatter",
